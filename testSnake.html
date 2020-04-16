@@ -18,7 +18,7 @@
   setInterval(draw, 100);
 
   var snake = [
-    {x:120,y:200},
+    { x: 120, y: 200 },
   ]
   var bodyX = snake[0].x;
   var bodyY = snake[0].y;
@@ -31,31 +31,39 @@
 
     screen.fillStyle = "green";
     screen.fillRect(0, 0, 700, 500);
+
+    //drawing snake
+    for (i = 0; i < snake.length; i++) {
+      screen.fillStyle = "blue";
+      screen.fillRect(snake[i].x, snake[i].y, 20, 20);
+      screen.strokeStyle = "black";
+      screen.strokeRect(snake[i].x, snake[i].y, 20, 20);
+
+    }
     screen.fillStyle = "red";
     screen.fillRect(foodx, foody, 20, 20);
 
-      //drawing snake
-  for (i=0;i<snake.length;i++){
-    screen.fillStyle= "blue";
-    screen.fillRect(snake[i].x,snake[i].y,20,20);
-    screen.strokeStyle = "black";
-    screen.strokeRect(snake[i].x,snake[i].y,20,20);
-  }
-  }
-  
-  document.addEventListener("keydown", push);
-var to='';
-//Controls
-function push(e) {
-      if (e.keyCode == 37 && to != "right") 
-      to = "left";
-      else if (e.keyCode == 38 && to != "down") 
-      to = "up";
-      else if (e.keyCode == 39 && to != "left") 
-      to = "right";
-      else if (e.keyCode == 40 &&  to != "up") 
-      to = "down";
+
+    if (bodyX == foodx && bodyY == foody) {
+      foodx = Math.floor(Math.random() * 34) * 20;
+      foody = Math.floor(Math.random() * 24) * 20;
+      score.innerHTML++;
     }
+  }
+
+  document.addEventListener("keydown", push);
+  var to = '';
+  //Controls
+  function push(e) {
+    if (e.keyCode == 37 && to != "right")
+      to = "left";
+    else if (e.keyCode == 38 && to != "down")
+      to = "up";
+    else if (e.keyCode == 39 && to != "left")
+      to = "right";
+    else if (e.keyCode == 40 && to != "up")
+      to = "down";
+  }
 
 </script>
 
