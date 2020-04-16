@@ -4,13 +4,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <title>The Snake Game</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #2f2f2f;
+  }
+  .text {
+    margin: 10px 0;
+    height: 200px;
+    text-align: center;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
 
+  h1, h3 {
+    color: #ff0064;
+    font-size: 70px;
+    line-height: 70px;
+    margin: 10px 0;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+</head>
+  
 <body>
-  <canvas id="canvas" width="700" height="500" style="display: block; margin: auto;margin-top: 50px;"></canvas>
-  <p>YOur score is <span id="score">0</span></p>
+    <div class="text">
+      <h1>The Snake Game</h1>
+      <h2>Score: <span id="score">0</span></h2>
+    </div>
+<canvas id="canvas" width="700" height="500" style="display: block; margin: auto;margin-top: 50px;"></canvas>
 </body>
+  
 <script>
   var canvas = document.getElementById("canvas");
   var screen = canvas.getContext("2d");
