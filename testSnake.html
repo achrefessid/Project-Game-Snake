@@ -42,6 +42,21 @@
     screen.strokeRect(snake[i].x,snake[i].y,20,20);
   }
   }
+  
+  document.addEventListener("keydown", push);
+var to='';
+//Controls
+function push(e) {
+      if (e.keyCode == 37 && to != "right") 
+      to = "left";
+      else if (e.keyCode == 38 && to != "down") 
+      to = "up";
+      else if (e.keyCode == 39 && to != "left") 
+      to = "right";
+      else if (e.keyCode == 40 &&  to != "up") 
+      to = "down";
+    }
+
 </script>
 
 </html>
