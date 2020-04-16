@@ -108,6 +108,24 @@
     else if (e.keyCode == 40 && to != "up")
       to = "down";
   }
+  
+    if (to == "left") 
+  bodyX -= 20;
+  if (to == "up") 
+  bodyY -= 20;
+  if (to == "right") 
+  bodyX += 20;
+  if (to == "down") 
+  bodyY += 20;
+  if (bodyX== 700 && to == "right") 
+  bodyX=0;
+  if (bodyX== -20 && to == "left") 
+  bodyX=680;
+  if (bodyY== -20 && to == "up") 
+  bodyY=480;
+  if (bodyY== 500 && to == "down") 
+  bodyY=0;
+}
 
 </script>
 
