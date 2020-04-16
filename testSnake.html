@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="700" height="500" style="display: block; margin: auto;margin-top: 50px;"></canvas>
+  <p>YOur score is <span id="score">0</span></p>
+</body>
+<script>
+  var canvas = document.getElementById("canvas");
+  var screen = canvas.getContext("2d");
+  var score = document.getElementById("score");
+  setInterval(draw, 100);
+
+
+
+  //Drawing firstfood
+  var foodx = Math.floor(Math.random() * 34) * 20;
+  var foody = Math.floor(Math.random() * 24) * 20;
+
+  function draw() {
+
+    screen.fillStyle = "green";
+    screen.fillRect(0, 0, 700, 500);
+    screen.fillStyle = "red";
+    screen.fillRect(foodx, foody, 20, 20);
+  }
+
+</script>
+
+</html>
