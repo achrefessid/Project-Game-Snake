@@ -17,7 +17,11 @@
   var score = document.getElementById("score");
   setInterval(draw, 100);
 
-
+  var snake = [
+    {x:120,y:200},
+  ]
+  var bodyX = snake[0].x;
+  var bodyY = snake[0].y;
 
   //Drawing firstfood
   var foodx = Math.floor(Math.random() * 34) * 20;
@@ -29,8 +33,15 @@
     screen.fillRect(0, 0, 700, 500);
     screen.fillStyle = "red";
     screen.fillRect(foodx, foody, 20, 20);
-  }
 
+      //drawing snake
+  for (i=0;i<snake.length;i++){
+    screen.fillStyle= "blue";
+    screen.fillRect(snake[i].x,snake[i].y,20,20);
+    screen.strokeStyle = "black";
+    screen.strokeRect(snake[i].x,snake[i].y,20,20);
+  }
+  }
 </script>
 
 </html>
