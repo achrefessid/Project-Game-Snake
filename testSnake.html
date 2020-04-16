@@ -49,6 +49,9 @@
       foody = Math.floor(Math.random() * 24) * 20;
       score.innerHTML++;
     }
+    else {snake.pop();}
+
+  snake.unshift({x:bodyX, y:bodyY});
   }
 
   document.addEventListener("keydown", push);
