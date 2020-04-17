@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mgs.css">
+  <title>Snake game</title>
+</head>
+<body>
+  <div class="psp">
+    <canvas id="canvas" width="720" height="440" style="display: block; margin: auto;margin-top: 50px;"></canvas>
+  </div>
+  <span>Your score is <span  id="spawn">0</span></span> 
+  <span>Highest score <span id="highest">0</span></span>
+</body>
+<script>
+  var canvas= document.getElementById("canvas");
+  var screen= canvas.getContext("2d");
+  var spawn = document.getElementById("spawn");
+  var highest = document.getElementById("highest");
+  highest.innerHTML = Number(localStorage.getItem("biggest"));
+  var score = 0; 
+  var biggest = 0;
+
+  const dead = new Audio();
+  const bite = new Audio();
+  dead.src = "dead.mp3";
+  bite.src = "eat.mp3";
+
+  var snake = [
+    {x:120,y:200},
+  ]
+  var bodyX = snake[0].x;
+  var bodyY = snake[0].y;
+
+    //Drawing firstfood
+  var foodx= Math.floor(Math.random()*35)*20;
+  var foody= Math.floor(Math.random()*21)*20;
+  
+  var field = new Image();
+  field.src= "1.jpg";
+   
+function draw(){
+
+  //updating ground
+  screen.drawImage(field,0,0,720,440);
+
+  //drawing snake
+  for (i=0;i<snake.length;i++){
+    screen.fillStyle= "black";
+    screen.fillRect(snake[i].x,snake[i].y,20,20);
+    screen.strokeStyle = "yellow";
+    screen.strokeRect(snake[i].x,snake[i].y,20,20);
+  }
+  
+    screen.fillStyle= "red";
+    screen.strokeStyle= "black";
+    screen.fillRect(foodx,foody,20,20);
+    screen.strokeRect(foodx,foody,20,20);
+
+
+  if(bodyX==foodx && bodyY==foody){
+    foodx= Math.floor(Math.random()*35)*20;
+    foody= Math.floor(Math.random()*21)*20;
+    for(i=0;i<snake.length;i++){
+      if(snake[i].x == foodx && snake[i].y == foody){
+        foodx= Math.floor(Math.random()*35)*20;
+      foody= Math.floor(Math.random()*21)*20;
+      }
+    }
+      bite.play();
+      score++;
+      spawn.innerHTML= score;
+  }
+  else {snake.pop();}
+  snake.unshift({x:bodyX, y:bodyY});
+
+  for(i=1;i<snake.length;i++){
+    if(bodyX == snake[i].x && bodyY == snake[i].y){
+    snake = [];
+    dead.play();
+    if(score>biggest){
+  biggest = score;
+  localStorage.setItem("biggest", biggest);
+  
+}
+    score = 0;
+    spawn.innerHTML= score;
+    }
+  }
+   
+  if (to == "left") bodyX -= 20;
+  if (to == "up") bodyY -= 20;
+  if (to == "right") bodyX += 20;
+  if (to == "down") bodyY += 20;
+  if(bodyX== 720 && to == "right") bodyX=0;
+  if(bodyX== -20 && to == "left") bodyX=700;
+  if(bodyY== -20 && to == "up") bodyY=420;
+  if(bodyY== 440 && to == "down") bodyY=0;
+
+  if(score>biggest){
+  biggest = score;
+  localStorage.setItem("biggest", biggest);
+}
+}
+
+
+document.addEventListener("keydown", push);
+var to='';
+//Controls
+function push(e) {
+      if (e.keyCode == 37 && to != "right") to = "left";
+      else if (e.keyCode == 38 && to != "down") to = "up";
+      else if (e.keyCode == 39 && to != "left") to = "right";
+      else if (e.keyCode == 40 &&  to != "up") to = "down";
+    }
+    if(spawn > best){
+				localStorage.setItem('highest spawn',spawn);
+        highspawn.innerHTML =best;
+      }
+      setInterval(draw, 100);
+
+</script>
+<body>
+</html>
