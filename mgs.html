@@ -19,6 +19,7 @@
   var spawn = document.getElementById("spawn");
   var highest = document.getElementById("highest");
   highest.innerHTML = Number(localStorage.getItem("biggest"));
+  setInterval(draw, 100);
   var score = 0; 
   var biggest = 0;
 
@@ -118,7 +119,6 @@ function push(e) {
 				localStorage.setItem('highest spawn',spawn);
         highspawn.innerHTML =best;
       }
-      setInterval(draw, 100);
 
 </script>
 <body>
